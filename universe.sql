@@ -86,8 +86,8 @@ ALTER SEQUENCE public.galaxy_galaxy_id_seq OWNED BY public.galaxy.galaxy_id;
 
 CREATE TABLE public.galaxy_type (
     galaxy_type_id integer NOT NULL,
-    galaxy_name character varying(40) NOT NULL,
-    galaxy_description text
+    name character varying(40) NOT NULL,
+    description text
 );
 
 
@@ -121,7 +121,7 @@ ALTER SEQUENCE public.galaxy_type_galaxy_type_id_seq OWNED BY public.galaxy_type
 
 CREATE TABLE public.moon (
     moon_id integer NOT NULL,
-    moon_name character varying(50) NOT NULL,
+    name character varying(50) NOT NULL,
     planet_id integer NOT NULL,
     radius_km integer NOT NULL,
     is_spherical boolean
@@ -157,7 +157,7 @@ ALTER SEQUENCE public.moon_moon_id_seq OWNED BY public.moon.moon_id;
 
 CREATE TABLE public.planet (
     planet_id integer NOT NULL,
-    planet_name character varying(50) NOT NULL,
+    name character varying(50) NOT NULL,
     star_id integer NOT NULL,
     has_life boolean NOT NULL,
     distance_from_star numeric
@@ -194,7 +194,7 @@ ALTER SEQUENCE public.planet_planet_id_seq OWNED BY public.planet.planet_id;
 
 CREATE TABLE public.star (
     star_id integer NOT NULL,
-    star_name character varying(50) NOT NULL,
+    name character varying(50) NOT NULL,
     galaxy_id integer NOT NULL,
     is_spherical boolean NOT NULL,
     mass_solar numeric
@@ -393,7 +393,7 @@ ALTER TABLE ONLY public.galaxy
 --
 
 ALTER TABLE ONLY public.galaxy_type
-    ADD CONSTRAINT galaxy_type_galaxy_name_key UNIQUE (galaxy_name);
+    ADD CONSTRAINT galaxy_type_galaxy_name_key UNIQUE (name);
 
 
 --
@@ -409,7 +409,7 @@ ALTER TABLE ONLY public.galaxy_type
 --
 
 ALTER TABLE ONLY public.moon
-    ADD CONSTRAINT moon_moon_name_key UNIQUE (moon_name);
+    ADD CONSTRAINT moon_moon_name_key UNIQUE (name);
 
 
 --
@@ -425,7 +425,7 @@ ALTER TABLE ONLY public.moon
 --
 
 ALTER TABLE ONLY public.planet
-    ADD CONSTRAINT planet_palnet_name_key UNIQUE (planet_name);
+    ADD CONSTRAINT planet_palnet_name_key UNIQUE (name);
 
 
 --
@@ -449,7 +449,7 @@ ALTER TABLE ONLY public.star
 --
 
 ALTER TABLE ONLY public.star
-    ADD CONSTRAINT star_star_name_key UNIQUE (star_name);
+    ADD CONSTRAINT star_star_name_key UNIQUE (name);
 
 
 --
